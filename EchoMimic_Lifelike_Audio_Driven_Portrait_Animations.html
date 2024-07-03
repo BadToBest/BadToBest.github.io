@@ -1,0 +1,266 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>EchoMimic: Lifelike Audio-Driven Portrait Animations</title>
+<link href="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/style.css" rel="stylesheet">
+<style>@font-face {
+        font-family: 'monica-ext-font_YIBBBFG';
+        src: url('chrome-extension://ofpnmcalabcbjgholdjcjblkibolbppb/static/fonts/Hind-Light.otf');
+        font-weight: 300;
+        font-display: swap;
+      }
+@font-face {
+        font-family: 'monica-ext-font_YIBBBFG';
+        src: url('chrome-extension://ofpnmcalabcbjgholdjcjblkibolbppb/static/fonts/Hind-Regular.otf');
+        font-weight: 400;
+        font-display: swap;
+      }
+@font-face {
+        font-family: 'monica-ext-font_YIBBBFG';
+        src: url('chrome-extension://ofpnmcalabcbjgholdjcjblkibolbppb/static/fonts/Hind-Medium.otf');
+        font-weight: 500;
+        font-display: swap;
+      }
+@font-face {
+        font-family: 'monica-ext-font_YIBBBFG';
+        src: url('chrome-extension://ofpnmcalabcbjgholdjcjblkibolbppb/static/fonts/Hind-SemiBold.otf');
+        font-weight: 600;
+        font-display: swap;
+      }</style><style id="monica-reading-highlight-style">
+        .monica-reading-highlight {
+          animation: fadeInOut 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInOut {
+          0%, 100% { background-color: transparent; }
+          30%, 70% { background-color: rgba(2, 118, 255, 0.20); }
+        }
+      </style></head>
+
+<body monica-locale="zh_CN" monica-version="5.5.1" monica-id="ofpnmcalabcbjgholdjcjblkibolbppb">
+<div class="content">
+  <h1><span><img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/logo.png" style="height: 50px;"></span><strong><br>Lifelike Audio-Driven Portrait Animations through Editable Landmark Conditioning</strong></h1>
+  <div class="gallery" style="margin-bottom: 0;">
+    <div class="row" style="justify-content: space-evenly; padding: 0; margin-bottom: 0;">
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/teaser.png" style="height: 400px; width: auto;">
+      </figure>
+    </div> 
+  </div>
+
+  <p id="authors" class="serif">
+    <a>Zhiyuan Chen<sup>*</sup></a>
+    <a>Jiajiong Cao<sup>*<dag></dag></sup></a>
+    <a>Zhiquan Chen<sup></sup></a>
+    <a>Yuming Li<sup></sup></a>
+    <a>Chenguang Ma<sup></sup></a> <br>
+    <span style="font-size: 1.0em; margin-top: 0.8em">
+      <a><sup>*</sup>Equal Contribution.</a>
+    <br>
+    <span style="font-size: 1.0em; margin-top: 0.8em">
+      <a>Terminal Technology Department, Alipay, Ant Group.</a>
+    </span>
+  </p>
+
+  <font size="+2">
+    <!-- <div style="text-align: center; display: flex; justify-content: space-between; margin: 20px 60px;"> -->
+    <div style="text-align: center; display: flex; justify-content: space-between; margin: 10px 200px;">
+      <a target="_blank" ,="" href="https://arxiv.org/abs/2406.01900">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/th.png" alt="arxiv" ,="" style="width: 25px;">[Paper]
+      </a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a target="_blank" ,="" href="https://www.bilibili.com/video/BV1nw4m1S7Es/?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=f100f899ec3b9d11d43189f4959759f8">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/github.png" alt="github" ,="" style="width: 25px;">[Github]
+      </a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a target="_blank" ,="" href="https://github.com/mayuelala">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/hugface.png" alt="huggingface" ,="" style="width: 25px;">[HuggingFace]
+      </a>&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+  </font>
+
+</div>
+
+<div class="content">
+  <h2 style="text-align:center"><strong>Abstract</strong></h2> 
+  <p>We present <span style="color: #c20557ee">EchoMimic</span>, a diffusion-based framework for portrait animation, which animates a reference portrait with target landmark sequences.
+    The main challenge of portrait animation is to preserve the identity of the reference portrait  and transfer the target expression to this portrait while maintaining temporal consistency and fidelity.</p>
+  <div id="teasers">
+      <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/algo_framework.png" ,="" style="width: 100%;">
+      <figcaption></figcaption>
+  </div>
+  <p>
+    To address these challenges, Follow-Your-Emoji equipped the powerful Stable Diffusion model with two well-designed technologies. Specifically,  we first adopt a new explicit motion signal, namely expression-aware landmark,  to guide the animation process. We discover this landmark can not only ensure the accurate motion alignment between the reference portrait and target motion during inference but also increase the ability to portray exaggerated expressions (i.e., large pupil movements) and avoid identity leakage. Then, we propose a facial fine-grained loss to improve the model's ability of subtle expression perception and reference portrait appearance reconstruction by using both expression and facial masks. 
+    Accordingly, our method demonstrates significant performance in controlling the expression of freestyle portraits, including real humans, cartoons, sculptures, and even animals. By leveraging a simple and effective progressive generation strategy, we extend our model to stable long-term animation, thus increasing its potential application value. To address the lack of a benchmark for this field, we introduce \textbf{EmojiBench}, a comprehensive benchmark comprising diverse portrait images, driving videos, and landmarks. We show extensive evaluations on EmojiBench to verify the superiority of Follow-Your-Emoji. 
+    
+  </p>
+</div>
+
+<div class="content">
+  <h2 style="text-align: center;"><strong>Gallery</strong></h2>
+  <h3>Audio Driven (Chinese)</h3>
+  <div class="gallery">
+    <div class="row">
+      <video width="195" height="195" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/ch_01.mp4" type="video/mp4">
+      </video>
+      <video width="195" height="195" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/ch_02.mp4" type="video/mp4">
+      </video>
+      <video width="195" height="195" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/ch_03.mp4" type="video/mp4">
+      </video>
+      <video width="195" height="195" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/ch_04.mp4" type="video/mp4">
+      </video>
+      <video width="195" height="195" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/ch_05.mp4" type="video/mp4">
+      </video>
+    </div>
+    <h3>Audio Driven (English)</h3>
+    <div class="row">
+      <video width="195" height="195" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/english/en_01.mp4" type="video/mp4">
+      </video>
+      <video width="195" height="195" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/english/en_02.mp4" type="video/mp4">
+      </video>
+      <video width="195" height="195" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/english/en_03.mp4" type="video/mp4">
+      </video>
+      <video width="195" height="195" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/english/en_04.mp4" type="video/mp4">
+      </video>
+      <video width="195" height="195" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/english/en_05.mp4" type="video/mp4">
+      </video>
+    </div>
+    <h3>Audio Driven (Sing)</h3>
+    <div class="row">
+      <video width="195" height="195" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/singing/s_02.mp4" type="video/mp4">
+      </video>
+      <video width="195" height="195" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/singing/s_03.mp4" type="video/mp4">
+      </video>
+      <video width="195" height="195" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/singing/s_05.mp4" type="video/mp4">
+      </video>
+      <video width="195" height="195" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/singing/s_01.mp4" type="video/mp4">
+      </video>
+      <video width="195" height="195" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/singing/s_04.mp4" type="video/mp4">
+      </video>
+    </div>
+    <h3><strong>Landmark Driven</strong></h3>
+    <div class="row">
+      <video width="324" height="162" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/pose_only/po_01.mp4" type="video/mp4">
+      </video>
+      <video width="324" height="162" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/pose_only/po_02.mp4" type="video/mp4">
+      </video>
+      <video width="324" height="162" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/pose_only/po_03.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="row">
+      <video width="324" height="162" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/pose_only/po_04.mp4" type="video/mp4">
+      </video>
+      <video width="324" height="162" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/pose_only/po_05.mp4" type="video/mp4">
+      </video>
+      <video width="324" height="162" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/pose_only/po_06.mp4" type="video/mp4">
+      </video>
+    </div>
+    <h3><strong>Audio + Selected Landmark Driven</strong></h3>
+    <div class="row">
+      <video width="324" height="162" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/audio_pose/ap_01.mp4" type="video/mp4">
+      </video>
+      <video width="324" height="162" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/audio_pose/ap_02.mp4" type="video/mp4">
+      </video>
+      <video width="324" height="162" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/audio_pose/ap_03.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="row">
+      <video width="324" height="162" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/audio_pose/ap_04.mp4" type="video/mp4">
+      </video>
+      <video width="324" height="162" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/audio_pose/ap_05.mp4" type="video/mp4">
+      </video>
+      <video width="324" height="162" controls>
+        <source src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/audio_pose/ap_06.mp4" type="video/mp4">
+      </video>
+    </div>
+    <h3><strong>Reference Images Used in Demos</strong></h3>
+    <div class="row">
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/ref_imgs/000.png" style="height: 121px; width: auto;">
+      </figure>
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/ref_imgs/001.png" style="height: 121px; width: auto;">
+      </figure>
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/ref_imgs/002.png" style="height: 121px; width: auto;">
+      </figure>
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/ref_imgs/003.png" style="height: 121px; width: auto;">
+      </figure>
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/ref_imgs/004.png" style="height: 121px; width: auto;">
+      </figure>
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/ref_imgs/005.png" style="height: 121px; width: auto;">
+      </figure>
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/ref_imgs/006.png" style="height: 121px; width: auto;">
+      </figure>
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/ref_imgs/007.png" style="height: 121px; width: auto;">
+      </figure>
+    </div>
+    <div class="row">
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/ref_imgs/008.png" style="height: 121px; width: auto;">
+      </figure>
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/ref_imgs/009.png" style="height: 121px; width: auto;">
+      </figure>
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/ref_imgs/010.png" style="height: 121px; width: auto;">
+      </figure>
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/ref_imgs/011.png" style="height: 121px; width: auto;">
+      </figure>
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/ref_imgs/012.png" style="height: 121px; width: auto;">
+      </figure>
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/ref_imgs/013.png" style="height: 121px; width: auto;">
+      </figure>
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/ref_imgs/014.png" style="height: 121px; width: auto;">
+      </figure>
+      <figure style="width: 100%;margin: 0 0; text-align: center;">
+        <img src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/ref_imgs/015.png" style="height: 121px; width: auto;">
+      </figure>
+    </div>
+    
+  </div>
+</div>
+<div class="content">
+  <h2 style="text-align:center; margin: 0 auto;"><strong>BibTex</strong></h2>
+  <code>@article{chen2024echomimic,<br>
+      title={EchoMimic: Lifelike Audio-Driven Portrait Animations through Editable Landmark Conditioning},<br> 
+      author={Zhiyuan Chen, Jiajiong Cao, Zhiquan Chen, Yuming Li, Chenguang Ma},<br>
+      year={2024},<br>
+      eprint={2406.01900},<br>
+      archivePrefix={arXiv},<br>
+      primaryClass={cs.CV}<br>
+}
+   </code>
+</div>
