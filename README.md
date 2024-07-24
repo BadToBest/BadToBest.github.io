@@ -1,6 +1,14 @@
 # BadToBest Team
 We are a group of algorithm engineers from the Terminal Technology Department of Ant Group, and we are very pleased to communicate with everyone.
 
+# Open Source Projects
+<div align='left'>
+    <a href='https://github.com/BadToBest'><img src='https://badges.aleen42.com/src/github.svg'></a>
+    <a href='https://huggingface.co/BadToBest'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Model-yellow'></a>
+    <a href='https://www.modelscope.cn/organization/BadToBest'><img src='https://img.shields.io/badge/ModelScope-Model-purple'></a>
+    <a href='assets/echomimic.png'><img src='https://badges.aleen42.com/src/wechat.svg'></a>
+</div>
+
 # Publications
 1. Chen, Z., Cao, J., Chen, Z., Li, Y., & Ma, C. (2024). EchoMimic: Lifelike Audio-Driven Portrait Animations through Editable Landmark Conditions. arXiv preprint arXiv:2407.08136.
 2. Chai, W., Zheng, D., Cao, J., Chen, Z., Wang, C., & Ma, C. (2023). SpeedUpNet: A Plug-and-Play Hyper-Network for Accelerating Text-to-Image Diffusion Models. arXiv preprint arXiv:2312.08887.
