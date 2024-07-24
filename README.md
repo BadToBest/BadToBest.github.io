@@ -21,3 +21,4 @@ We are a group of algorithm engineers from the Terminal Technology Department of
 9. Cao, J., Liu, Y., Ding, J., & Li, L. (2022, October). Self-supervised face anti-spoofing via anti-contrastive learning. In Chinese Conference on Pattern Recognition and Computer Vision (PRCV) (pp. 479-491). Cham: Springer Nature Switzerland.
 10. Li, S., Xu, Y., Wu, H., Wu, D., Yin, Y., Cao, J., & Ding, J. (2022). Facial affect analysis: Learning from synthetic data & multi-task learning challenges. arXiv preprint arXiv:2207.09748.
 11. Liu, Y., Cao, J., Li, B., Hu, W., Ding, J., & Li, L. (2022). Cross-architecture knowledge distillation. In Proceedings of the Asian conference on computer vision (pp. 3396-3411).
+12. Zheng, D., Liu, Y., & Li, L. (2022). Leveraging inter-layer dependency for post-training quantization. Advances in Neural Information Processing Systems, 35, 6666-6679.
