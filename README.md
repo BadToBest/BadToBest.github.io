@@ -6,7 +6,7 @@ We are a group of algorithm engineers from the Terminal Technology Department of
     <a href='https://github.com/BadToBest'><img src='https://badges.aleen42.com/src/github.svg'></a>
     <a href='https://huggingface.co/BadToBest'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Model-yellow'></a>
     <a href='https://www.modelscope.cn/organization/BadToBest'><img src='https://img.shields.io/badge/ModelScope-Model-purple'></a>
-    <a href='assets/echomimic.png'><img src='https://badges.aleen42.com/src/wechat.svg'></a>
+    <a href='https://github.com/BadToBest/EchoMimic/blob/main/assets/echomimic.png'><img src='https://badges.aleen42.com/src/wechat.svg'></a>
 </div>
 
 # Publications
