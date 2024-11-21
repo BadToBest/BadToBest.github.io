@@ -2,12 +2,8 @@
 We are a group of algorithm engineers from the Terminal Technology Department of Ant Group, and we are very pleased to communicate with everyone.
 
 # Open Source Projects
-<div align='left'>
-    <a href='https://github.com/BadToBest'><img src='https://badges.aleen42.com/src/github.svg'></a>
-    <a href='https://huggingface.co/BadToBest'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Model-yellow'></a>
-    <a href='https://www.modelscope.cn/organization/BadToBest'><img src='https://img.shields.io/badge/ModelScope-Model-purple'></a>
-    <a href='https://github.com/BadToBest/EchoMimic/blob/main/assets/echomimic.png'><img src='https://badges.aleen42.com/src/wechat.svg'></a>
-</div>
+* EchoMimicV1: Lifelike Audio-Driven Portrait Animations through Editable Landmark Conditioning. [GitHub](https://github.com/antgroup/echomimic)
+* EchoMimicV2: Towards Striking, Simplified, and Semi-Body Human Animation. [GitHub](https://github.com/antgroup/echomimic_v2)
 
 # Publications
 1. Chen, Z., Cao, J., Chen, Z., Li, Y., & Ma, C. (2024). EchoMimic: Lifelike Audio-Driven Portrait Animations through Editable Landmark Conditions. arXiv preprint arXiv:2407.08136.
